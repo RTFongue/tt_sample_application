@@ -1,0 +1,28 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+      <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+          <th>Temp. (C)</th>
+          <th>Temp. (F)</th>
+          <th>Summary</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let forecast of forecasts">
+          <td>{{ formatDate(forecast.date) }}</td>
+          <td>{{ formatTime(forecast.date) }}</td>
+          <td><img class="img-responsive" src="{{'assets/weather_images/' + getIcon(forecast.summary)}}" height="24" width="24"></td>
+          <td>{{ forecast.temperatureC }}</td>
+          <td>{{ forecast.temperatureF }}</td>
+          <td>{{ forecast.summary }}</td>
+      </tr>
+  </tbody>
+</table>
